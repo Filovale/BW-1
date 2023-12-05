@@ -112,20 +112,19 @@ function startTest() {
 
 function showQuest () {
     let question = document.getElementById("question");
-    //let answer1 = document.getElementById("primo");
-    //let answer2 = document.getElementById("secondo");
-    //let answer3 = document.getElementById("terzo");
-    //let answer4 = document.getElementById("quarto");
+    let answer1 = document.getElementById("primo");
+    let answer2 = document.getElementById("secondo");
+    let answer3 = document.getElementById("terzo");
+    let answer4 = document.getElementById("quarto");
 
   for (let i = 0; i < questions.length; i++) {
+    
     if (questionNumber < questions.length) {
       question.innerText = questions[i].question;
       answer1.innerText = questions[i].correct_answer;
       answer2.innerText = questions[i].incorrect_answers[0];
       answer3.innerText = questions[i].incorrect_answers[1];
-      answer4.innerText = questions[i].incorrect_answers[2];
-      questionNumber += 1;
-      i++;    
+      answer4.innerText = questions[i].incorrect_answers[2]; 
     } else {
       showResult()
     }
