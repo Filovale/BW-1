@@ -105,6 +105,14 @@ body {
     color: white;
 }
 
+#answers {
+    color: white;
+    font-size: 18px;
+    font-family: "inter";
+    display: flex;
+    flex-direction: column;
+}
+
 #answers input {
     margin: 50px;
     cursor: pointer;

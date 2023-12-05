@@ -100,28 +100,44 @@ const questions = [
 
 let score = 0;
 let questionNumber = 0;
-
+let answer = [];
 let proceedBtn = document.getElementById("proceed");
-//proceedBtn.addEventListener("onclick", showQuest());
+
 
 function startTest() {
   document.getElementById("main").style.display = "none";
   document.getElementById("quiz").style.display = "block";
+  showQuest();
 }
 
-
-// funzione 1 - mostrare la domanda e le risposte all'utente (ordine risposte esatte casuale)
 function showQuest () {
-  let question = document.getElementById("question");
-  answer = document.getElementsByClassName("answer");
-  question.innerText = questions[0].question;
-  for (let i = 0; i < answer.length; i++) {
-    answer[i].value = questions[i].incorrect_answers[i];
-    console.log (answer[i].value)
+    let question = document.getElementById("question");
+    //let answer1 = document.getElementById("primo");
+    //let answer2 = document.getElementById("secondo");
+    //let answer3 = document.getElementById("terzo");
+    //let answer4 = document.getElementById("quarto");
+
+  for (let i = 0; i < questions.length; i++) {
+    if (questionNumber < questions.length) {
+      question.innerText = questions[i].question;
+      answer1.innerText = questions[i].correct_answer;
+      answer2.innerText = questions[i].incorrect_answers[0];
+      answer3.innerText = questions[i].incorrect_answers[1];
+      answer4.innerText = questions[i].incorrect_answers[2];
+      questionNumber += 1;
+      i++;    
+    } else {
+      showResult()
+    }
   }
 }
 
+//Math.floor(Math.random() * risposte.length)
 
+/*
+function nextQuestion() {
+  showQuest();
+}
 
 
 
