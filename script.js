@@ -98,6 +98,35 @@ const questions = [
       },
 ];
 
+let score = 0;
+let questionNumber = 0;
+
+let proceedBtn = document.getElementById("proceed");
+//proceedBtn.addEventListener("onclick", showQuest());
+
+function startTest() {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("quiz").style.display = "block";
+}
+
+
+// funzione 1 - mostrare la domanda e le risposte all'utente (ordine risposte esatte casuale)
+function showQuest () {
+  let question = document.getElementById("question");
+  answer = document.getElementsByClassName("answer");
+  question.innerText = questions[0].question;
+  for (let i = 0; i < answer.length; i++) {
+    answer[i].value = questions[i].incorrect_answers[i];
+    console.log (answer[i].value)
+  }
+}
+
+
+
+
+
+
+
 
 /*
 // VARIABILI UTILI: 

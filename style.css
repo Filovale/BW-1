@@ -93,3 +93,29 @@ body {
     transition: box-shadow 0.3s;
 }
 
+#quiz {
+   display: none;
+   text-align: center;
+}
+
+#question {
+    font-size: 60px;
+    font-family: "outfit";
+    font-weight: 300;
+    color: white;
+}
+
+#answers input {
+    margin: 50px;
+    cursor: pointer;
+}
+
+#quiz button {
+    background-color: #00ffff;
+    height: 30px;
+    width: 130px;
+    border: #00ffff;
+    border-radius: 10px;
+    cursor:pointer;
+    margin-top: 200px;
+}
