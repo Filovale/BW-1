@@ -115,23 +115,34 @@ function showQuest () {
     let answer3 = document.getElementById("terzo");
     let answer4 = document.getElementById("quarto");
       
-  
-    
     if (questionNumber < questions.length) {
       question.innerText = questions[questionNumber].question;
-      answer1.innerText = questions[questionNumber].correct_answer;
-      answer2.innerText = questions[questionNumber].incorrect_answers[0];
-      answer3.innerText = questions[questionNumber].incorrect_answers[1];
-      answer4.innerText = questions[questionNumber].incorrect_answers[2]; 
+
+      let allAnswers = [
+        questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers,
+      ];
+
+      //mescola random le risposte
+      allAnswers = shuffleArray(allAnswers);
+
+      answer1.innerText = allAnswers[0];
+      answer2.innerText = allAnswers[1];
+      answer3.innerText = allAnswers[2];
+      answer4.innerText = allAnswers[3];
 
        // Aggiungi un evento di ascolto per gestire la risposta dell'utente
-    let answerInputs = document.getElementsByClassName("answer");
-      for (let i = 0; i < answerInputs.length; i++) {
+      let answerInputs = document.getElementsByClassName("answer");
+        for (let i = 0; i < answerInputs.length; i++) {
         answerInputs[i].addEventListener("click", checkAnswer); // do un evento di ascolto a ogni input di classe answer
         }
       } else {
       showResult()
     }
+}
+
+// Funzione per mescolare casualmente un array utilizzando la funzione sort con logica di confronto casuale
+function shuffleArray(array) {
+  return array.slice().sort(() => Math.random() - 0.5);
 }
 
 
@@ -172,4 +183,10 @@ disordinarle
 togliere le due undefined
 il bottone
 lo score
+
+answer1.innerText = questions[questionNumber].correct_answer;
+answer2.innerText = questions[questionNumber].incorrect_answers[0];
+answer3.innerText = questions[questionNumber].incorrect_answers[1];
+answer4.innerText = questions[questionNumber].incorrect_answers[2]; 
+
 */
