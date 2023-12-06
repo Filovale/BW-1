@@ -118,9 +118,11 @@ function showQuest () {
     if (questionNumber < questions.length) {
       question.innerText = questions[questionNumber].question;
 
-      let allAnswers = [
-        questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers,
-      ];
+      let correctAnswer = questions[questionNumber].correct_answer;
+      //let incorrectAnswers = questions[questionNumber].incorrect_answers;
+
+      // Combina le risposte corrette e sbagliate in un array
+      let allAnswers = [correctAnswer].concat(questions[questionNumber].incorrect_answers);
 
       //mescola random le risposte
       allAnswers = shuffleArray(allAnswers);
