@@ -153,7 +153,7 @@ function shuffleArray(array) {
 
 //funzione per vedere se la risposta è corretta
 function checkAnswer(event) {
-  let userAnswer = event.target.nextSibling.textContent; // Ottieni la risposta selezionata dall'utente
+  let userAnswer = event.target.textContent; // Ottieni la risposta selezionata dall'utente
 
   // Verifica se la risposta dell'utente è corretta
   if (userAnswer === questions[questionNumber].correct_answer) {
@@ -191,7 +191,7 @@ function showResult() {
 togliere le due undefined
 il bottone
 lo score
-if se non chekki non parte
+
 
 answer1.innerText = questions[questionNumber].correct_answer;
 answer2.innerText = questions[questionNumber].incorrect_answers[0];
