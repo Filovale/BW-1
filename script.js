@@ -16,7 +16,7 @@ const questions = [
         type: "multiple",
         difficulty: "easy",
         question:
-          "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+          "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
         correct_answer: "Final",
         incorrect_answers: ["Static", "Private", "Public"],
       },
@@ -98,11 +98,9 @@ const questions = [
       },
 ];
 
+
 let score = 0;
 let questionNumber = 0;
-let answer = [];
-let proceedBtn = document.getElementById("proceed");
-
 
 function startTest() {
   document.getElementById("main").style.display = "none";
@@ -116,58 +114,62 @@ function showQuest () {
     let answer2 = document.getElementById("secondo");
     let answer3 = document.getElementById("terzo");
     let answer4 = document.getElementById("quarto");
-
-  for (let i = 0; i < questions.length; i++) {
+      
+  
     
     if (questionNumber < questions.length) {
-      question.innerText = questions[i].question;
-      answer1.innerText = questions[i].correct_answer;
-      answer2.innerText = questions[i].incorrect_answers[0];
-      answer3.innerText = questions[i].incorrect_answers[1];
-      answer4.innerText = questions[i].incorrect_answers[2]; 
+      question.innerText = questions[questionNumber].question;
+      answer1.innerText = questions[questionNumber].correct_answer;
+      answer2.innerText = questions[questionNumber].incorrect_answers[0];
+      answer3.innerText = questions[questionNumber].incorrect_answers[1];
+      answer4.innerText = questions[questionNumber].incorrect_answers[2]; 
+
+       // Aggiungi un evento di ascolto per gestire la risposta dell'utente
+    let answerInputs = document.getElementsByClassName("answer");
+    for (let i = 0; i < answerInputs.length; i++) {
+      answerInputs[i].addEventListener("click", checkAnswer);
+    }
+
     } else {
       showResult()
     }
+}
+
+
+function checkAnswer(event) {
+  let userAnswer = event.target.nextSibling.textContent; // Ottieni la risposta selezionata dall'utente
+
+  // Verifica se la risposta dell'utente è corretta
+  if (userAnswer === questions[questionNumber].correct_answer) {
+    score += 1; // Incrementa il punteggio se la risposta è corretta
   }
+
+  questionNumber++; // Passa alla prossima domanda
+
+  let nextButton = document.getElementById("nextQuestion");
+  nextButton.style.display = "block"; // Mostra il pulsante "Next Question"
 }
 
-//Math.floor(Math.random() * risposte.length)
-
-/*
 function nextQuestion() {
-  showQuest();
+  let nextButton = document.getElementById("nextQuestion");
+  nextButton.style.display = "none"; // Nascondi il pulsante "Next Question"
+
+  showQuest(); // Mostra la prossima domanda
 }
 
+function showResult() {
+  document.getElementById("quiz").style.display = "none";
 
-
-
+  // Mostra solo il punteggio finale
+  let result = document.createElement("h2");
+  result.innerText = "Il tuo punteggio finale è: " + score;
+  document.body.appendChild(result);
+}
 
 
 /*
-// VARIABILI UTILI: 
-let answer = []; //l'input radio dovrebbe restituire un array di elementi; accedendo alla proprietà value capiamo quale è stato selezionato (restituendolo come stringa)
-let questionNumber = []; // restituirà un array, quando > domande da fare, dovrà mostrare il punteggio
-let score = 0; 
-
-// funzione 1 - mostrare la domanda e le risposte all'utente (ordine risposte esatte casuale)
-// funzione 2 - raccogliere input utente - conta punteggio 
-// funzione 3 - restituisce il punteggio finale e lo "stampa"
-
-function showTest () {
-
-}
-
-function testAnswer (input) {
-  // array.value per capire quale risposta è stata selezionata e con ciclo FOR:
-  // IF (giusta) --> score++
-  // ELSE (sbagliata) ---> [score === score]
-}
-
-function totalScore (input) {
-  // prende la variabile in cui è salvato il valore di testAnswer
-  // restituisce il punteggio (vediamo poi se in numero o percentuale)
-}
-
-// TIMER:
-// funzione da implementare
-*/                                                                                                                                                                                                                                                                                        
+disordinarle
+togliere le due undefined
+il bottone
+lo score
+*/

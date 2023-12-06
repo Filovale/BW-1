@@ -40,7 +40,7 @@ body {
     font-size: 18px;
 }
 
-#midparagraph h2 {
+#instruction {
     color: #d20094;
     font-family: "inter";
     font-weight: bold;
@@ -148,3 +148,8 @@ input[type="radio"]:checked + label {
     cursor:pointer;
     margin-top: 200px;
 }
+
+#divButtonNext {
+    text-align: center;
+}
+
