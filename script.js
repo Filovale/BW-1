@@ -108,6 +108,7 @@ function startTest() {
     document.getElementById("main").style.display = "none";
     document.getElementById("quiz").style.display = "block";
     showQuest();
+    
   }
 }
 
@@ -129,7 +130,7 @@ function showQuest () {
       let allAnswers = [correctAnswer].concat(questions[questionNumber].incorrect_answers);
 
       //mescola random le risposte
-      allAnswers = shuffleArray(allAnswers);
+      allAnswers = toRandomArray(allAnswers);
 
       //gestione caso in cui la domanda preveda solo due risposte
       if (questions[questionNumber].type === "multiple") {
@@ -162,17 +163,24 @@ function showQuest () {
 }
 
 // Funzione per mescolare casualmente un array utilizzando la funzione sort con logica di confronto casuale
-function shuffleArray(array) {
-  return array.slice().sort(() => Math.random() - 0.5);
+function toRandomArray(array) {
+  let mixedArray = [];
+  while (array.length > 0) {
+    let randomIndex = Math.floor(Math.random() * array.length);
+    let randomElement = array.splice(randomIndex, 1)[0];
+    mixedArray.push(randomElement);
+  }
+  return mixedArray;
 }
 
 //funzione per vedere se la risposta è corretta
 function checkAnswer(event) {
-  let userAnswer = event.target.textContent; // Ottieni la risposta selezionata dall'utente
+  let userAnswer = event.target.value; // Ottieni la risposta selezionata dall'utente
 
   // Verifica se la risposta dell'utente è corretta
   if (userAnswer === questions[questionNumber].correct_answer) {
     score ++; // Incrementa il punteggio se la risposta è corretta
+   
   }
 
   questionNumber++; // Passa alla prossima domanda
@@ -203,9 +211,6 @@ function showResult() {
 
 
 /*
-
-il bottone
 lo score
-mettere 2 a 2 le risp e adattarle alla lung della domanda
-
+timer
 */
