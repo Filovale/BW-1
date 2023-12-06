@@ -110,8 +110,8 @@ body {
     font-size: 18px;
     font-family: "inter";
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
 }
 
 #answers input {
@@ -126,13 +126,14 @@ input[type="radio"] {
 label {
     display: inline-block;
     margin-top: 50px;
-    height: 60px;
-    width: 200px;
+    height: fit-content;
+    width: fit-content;
     background-color: transparent;
     color: white;
     border-radius: 5px;
     cursor: pointer;
     border-radius: 20px;
+    padding: 20px 10px;
 }
 
 input[type="radio"]:checked + label {

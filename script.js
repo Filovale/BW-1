@@ -131,15 +131,30 @@ function showQuest () {
       //mescola random le risposte
       allAnswers = shuffleArray(allAnswers);
 
-      answer1.innerText = allAnswers[0];
-      answer2.innerText = allAnswers[1];
-      answer3.innerText = allAnswers[2];
-      answer4.innerText = allAnswers[3];
+      //gestione caso in cui la domanda preveda solo due risposte
+      if (questions[questionNumber].type === "multiple") {
+        answer3.style.display = "block"; //impostiamo il block così qualora la domanda mostrata precedentemente era ELSE, le opzioni tornano visibili
+        answer4.style.display = "block";
+        answer1.innerText = allAnswers[0];
+        answer2.innerText = allAnswers[1];
+        answer3.innerText = allAnswers[2];
+        answer4.innerText = allAnswers[3];
+      } else {
+        answer1.innerText = allAnswers[0];
+        answer2.innerText = allAnswers[1];
+        answer3.style.display = "none";
+        answer4.style.display = "none";
+      }  
 
        // Aggiungi un evento di ascolto per gestire la risposta dell'utente
       let answerInputs = document.getElementsByClassName("answer");
+        // tolgo un listener per ogni input di classe 'answer'
         for (let i = 0; i < answerInputs.length; i++) {
-        answerInputs[i].addEventListener("click", checkAnswer); // do un evento di ascolto a ogni input di classe answer
+          answerInputs[i].checked = false;
+        }
+        // Aggiungi un listener per ogni input di classe 'answer'   
+        for (let i = 0; i < answerInputs.length; i++) {
+        answerInputs[i].addEventListener("click", checkAnswer); // do un evento di ascolto a ogni input di classe answer QUI CE IL BUG
         }
       } else {
       showResult()
@@ -188,14 +203,9 @@ function showResult() {
 
 
 /*
-togliere le due undefined
+
 il bottone
 lo score
-
-
-answer1.innerText = questions[questionNumber].correct_answer;
-answer2.innerText = questions[questionNumber].incorrect_answers[0];
-answer3.innerText = questions[questionNumber].incorrect_answers[1];
-answer4.innerText = questions[questionNumber].incorrect_answers[2]; 
+mettere 2 a 2 le risp e adattarle alla lung della domanda
 
 */
