@@ -126,11 +126,10 @@ function showQuest () {
 
        // Aggiungi un evento di ascolto per gestire la risposta dell'utente
     let answerInputs = document.getElementsByClassName("answer");
-    for (let i = 0; i < answerInputs.length; i++) {
-      answerInputs[i].addEventListener("click", checkAnswer);
-    }
-
-    } else {
+      for (let i = 0; i < answerInputs.length; i++) {
+        answerInputs[i].addEventListener("click", checkAnswer); // do un evento di ascolto a ogni input di classe answer
+        }
+      } else {
       showResult()
     }
 }
@@ -141,7 +140,7 @@ function checkAnswer(event) {
 
   // Verifica se la risposta dell'utente è corretta
   if (userAnswer === questions[questionNumber].correct_answer) {
-    score += 1; // Incrementa il punteggio se la risposta è corretta
+    score ++; // Incrementa il punteggio se la risposta è corretta
   }
 
   questionNumber++; // Passa alla prossima domanda
@@ -162,7 +161,8 @@ function showResult() {
 
   // Mostra solo il punteggio finale
   let result = document.createElement("h2");
-  result.innerText = "Il tuo punteggio finale è: " + score;
+  result.innerText = "This is your finale score: " + score;
+  result.classList.add("newH2");
   document.body.appendChild(result);
 }
 
