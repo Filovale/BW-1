@@ -98,16 +98,20 @@ const questions = [
       },
 ];
 
-
+//le due veriabili principali
 let score = 0;
 let questionNumber = 0;
 
+//parte premendo il tasto procedi
 function startTest() {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("quiz").style.display = "block";
-  showQuest();
+  if (document.getElementById("trusty").checked) {
+    document.getElementById("main").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+    showQuest();
+  }
 }
 
+//la funzione principlae che mostra le domande e le risposte
 function showQuest () {
     let question = document.getElementById("question");
     let answer1 = document.getElementById("primo");
@@ -147,7 +151,7 @@ function shuffleArray(array) {
   return array.slice().sort(() => Math.random() - 0.5);
 }
 
-
+//funzione per vedere se la risposta è corretta
 function checkAnswer(event) {
   let userAnswer = event.target.nextSibling.textContent; // Ottieni la risposta selezionata dall'utente
 
@@ -162,6 +166,7 @@ function checkAnswer(event) {
   nextButton.style.display = "block"; // Mostra il pulsante "Next Question"
 }
 
+//quando premi il tasto next question scompare il bottone e fa ripartire la funzione principale delle domande e risposte
 function nextQuestion() {
   let nextButton = document.getElementById("nextQuestion");
   nextButton.style.display = "none"; // Nascondi il pulsante "Next Question"
@@ -169,6 +174,8 @@ function nextQuestion() {
   showQuest(); // Mostra la prossima domanda
 }
 
+
+//funzione del risultato
 function showResult() {
   document.getElementById("quiz").style.display = "none";
 
@@ -181,10 +188,10 @@ function showResult() {
 
 
 /*
-disordinarle
 togliere le due undefined
 il bottone
 lo score
+if se non chekki non parte
 
 answer1.innerText = questions[questionNumber].correct_answer;
 answer2.innerText = questions[questionNumber].incorrect_answers[0];
