@@ -175,10 +175,11 @@ function toRandomArray(array) {
 
 //funzione per vedere se la risposta è corretta
 function checkAnswer(event) {
-  let userAnswer = event.target.value; // Ottieni la risposta selezionata dall'utente
-
+  let userAnswer =  event.target.nextElementSibling.textContent; // Ottieni la risposta selezionata dall'utente
+  
   // Verifica se la risposta dell'utente è corretta
-  if (userAnswer === questions[questionNumber].correct_answer) {
+
+  if (questions[questionNumber].correct_answer.includes(userAnswer)) {
     score ++; // Incrementa il punteggio se la risposta è corretta
    
   }
@@ -187,6 +188,7 @@ function checkAnswer(event) {
 
   let nextButton = document.getElementById("nextQuestion");
   nextButton.style.display = "block"; // Mostra il pulsante "Next Question"
+
 }
 
 //quando premi il tasto next question scompare il bottone e fa ripartire la funzione principale delle domande e risposte
@@ -208,6 +210,7 @@ function showResult() {
   result.classList.add("newH2");
   document.body.appendChild(result);
 }
+
 
 
 /*
